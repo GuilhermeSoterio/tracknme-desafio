@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_package = "br.com.content4devs";
+option java_multiple_files = true;
+
+package arquitetura.spring.hexagonal;
+
+service FuncionarioService {
+  rpc Create(FuncionarioRequest) returns (FuncionarioResponse);
+  rpc buscarPorId(buscarPorIdRequest) returns (FuncionarioResponse);
+  rpc buscarTodos(EmptyRequest) returns (FuncionarioResponseList);
+  rpc buscarPorCep(buscarPorCepRequest) returns (FuncionarioResponseList);
+}
+
+message EmptyRequest {}
+
+message FuncionarioResponseList {
+  repeated FuncionarioResponse funcionarios = 1;
+}
+
+message FuncionarioRequest {
+  string name = 1;
+  int32 idade = 2;
+  int32 sexo = 3;
+  string bairro = 4;
+  string estado = 5;
+  string cidade = 6;
+  string cep = 7;
+}
+
+message buscarPorIdRequest {
+  int64 id = 1;
+}
+
+message buscarPorCepRequest {
+  string cep = 1;
+}
+
+message FuncionarioResponse {
+  string name = 1;
+  int32 idade = 2;
+  int32 sexo = 3;
+  string bairro = 4;
+  string estado = 5;
+  string cidade = 6;
+  string cep = 7;
+}

@@ -27,8 +27,7 @@ public class SalvarFuncionarioAdapter implements SalvarFuncionarioPort {
     @Transactional
     public Funcionario salvar(Funcionario funcionario) {
         var funcionarioEntity = usuarioToUsuarioEntityMapper.mapper(funcionario);
-//        var enderecoEntity = enderecoToEnderecoEntityMapper.mapper(funcionario.getEndereco());
-//        funcionarioEntity.setEndereco(enderecoEntity);
+
         return usuarioEntityToUsuarioMapper.mapper(usuarioRepository.save(funcionarioEntity));
     }
 }
