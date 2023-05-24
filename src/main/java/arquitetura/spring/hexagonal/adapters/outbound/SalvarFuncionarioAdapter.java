@@ -15,19 +15,19 @@ import javax.transaction.Transactional;
 @AllArgsConstructor
 public class SalvarFuncionarioAdapter implements SalvarFuncionarioPort {
 
-    private final FuncionarioRepository usuarioRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
-    private final FuncionarioToFuncionarioEntityMapper usuarioToUsuarioEntityMapper;
+    private final FuncionarioToFuncionarioEntityMapper funcionarioToFuncionarioEntityMapper;
 
-    private final FuncionarioEntityToFuncionarioMapper usuarioEntityToUsuarioMapper;
+    private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToUsuarioMapper;
 
     private final EnderecoToEnderecoEntityMapper enderecoToEnderecoEntityMapper;
 
     @Override
     @Transactional
     public Funcionario salvar(Funcionario funcionario) {
-        var funcionarioEntity = usuarioToUsuarioEntityMapper.mapper(funcionario);
+        var funcionarioEntity = funcionarioToFuncionarioEntityMapper.mapper(funcionario);
 
-        return usuarioEntityToUsuarioMapper.mapper(usuarioRepository.save(funcionarioEntity));
+        return funcionarioEntityToUsuarioMapper.mapper(funcionarioRepository.save(funcionarioEntity));
     }
 }

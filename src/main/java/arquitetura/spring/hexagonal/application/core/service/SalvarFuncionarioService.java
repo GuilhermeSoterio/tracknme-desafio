@@ -21,8 +21,8 @@ public class SalvarFuncionarioService implements SalvarFuncionarioServicePort {
     @Override
     public Funcionario salvarUsuario(Funcionario funcionario, String cep) {
 
-        if(funcionario.getCep() != null && funcionario.getBairro() == null
-        && funcionario.getCidade() == null && funcionario.getEstado() == null){
+        if(funcionario.getCep() != null && funcionario.getBairro().isEmpty()
+        || funcionario.getCidade().isEmpty() || funcionario.getEstado().isEmpty()){
             var endereco = buscarEnderecoPort.buscar(cep);
             funcionario.setCidade(endereco.getCidade());
             funcionario.setEstado(endereco.getUf());

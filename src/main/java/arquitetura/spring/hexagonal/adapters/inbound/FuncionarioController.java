@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FuncionarioController {
 
-    private final SalvarFuncionarioServicePort salvarUsuarioServicePort;
+    private final SalvarFuncionarioServicePort salvarFuncionarioServicePort;
 
     private final BuscarFuncionarioPeloIdServicePort buscarFuncionarioPeloIdServicePort;
 
@@ -26,12 +26,12 @@ public class FuncionarioController {
 
     private final BuscarFuncionarioPeloCEPPort buscarFuncionarioPeloCEPPort;
 
-    private final FuncionarioRequestToFuncionarioMapper usuarioRequestToUsuarioMapper;
+    private final FuncionarioRequestToFuncionarioMapper funcionarioRequestToFuncionarioMapper;
 
     @PostMapping
     public Funcionario salvarFuncionario(@RequestBody FuncionarioRequest usuarioRequest){
-        var funcionario = usuarioRequestToUsuarioMapper.mapper(usuarioRequest);
-        return salvarUsuarioServicePort.salvarUsuario(funcionario, usuarioRequest.getCep());
+        var funcionario = funcionarioRequestToFuncionarioMapper.mapper(usuarioRequest);
+        return salvarFuncionarioServicePort.salvarUsuario(funcionario, usuarioRequest.getCep());
     }
 
     @GetMapping("/{id}")

@@ -19,7 +19,7 @@ message FuncionarioResponseList {
 }
 
 message FuncionarioRequest {
-  string name = 1;
+  string nome = 1;
   int32 idade = 2;
   int32 sexo = 3;
   string bairro = 4;
@@ -37,7 +37,7 @@ message buscarPorCepRequest {
 }
 
 message FuncionarioResponse {
-  string name = 1;
+  string nome = 1;
   int32 idade = 2;
   int32 sexo = 3;
   string bairro = 4;
