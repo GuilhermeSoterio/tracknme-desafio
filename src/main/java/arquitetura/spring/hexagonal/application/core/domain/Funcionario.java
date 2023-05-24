@@ -1,9 +1,6 @@
 package arquitetura.spring.hexagonal.application.core.domain;
 
 import arquitetura.spring.hexagonal.application.core.domain.enums.Sexo;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.time.LocalDate;
 
 public class Funcionario {
 
@@ -51,7 +48,7 @@ public class Funcionario {
 
     public void setCep(String cep) { this.cep = cep; }
 
-    public Sexo getSexo() { return sexo; }
+    public br.com.content4devs.Sexo getSexo() { return sexo; }
 
     public void setSexo(Sexo sexo) { this.sexo = sexo; }
 

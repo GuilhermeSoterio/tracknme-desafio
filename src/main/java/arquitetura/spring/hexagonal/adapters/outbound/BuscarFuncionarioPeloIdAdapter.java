@@ -1,5 +1,6 @@
 package arquitetura.spring.hexagonal.adapters.outbound;
 
+import arquitetura.spring.hexagonal.adapters.inbound.exception.FuncionarioNotFoundException;
 import arquitetura.spring.hexagonal.adapters.inbound.mapper.FuncionarioEntityToFuncionarioMapper;
 import arquitetura.spring.hexagonal.adapters.outbound.repository.FuncionarioRepository;
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
@@ -19,6 +20,7 @@ public class BuscarFuncionarioPeloIdAdapter implements BuscarFuncionarioPeloIdPo
     @Override
     @Transactional
     public Funcionario BuscarPeloId(Long id) {
-        return usuarioEntityToUsuarioMapper.mapper(usuarioRepository.findById(id).get());
+        return usuarioEntityToUsuarioMapper.mapper(usuarioRepository.findById(id)
+                .orElseThrow(() -> new FuncionarioNotFoundException(id)));
     }
 }

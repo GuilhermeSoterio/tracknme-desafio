@@ -1,16 +1,16 @@
 package arquitetura.spring.hexagonal.application.core.domain.enums;
 
 public enum Sexo {
-    MASCULINO(1),
-    FEMININO(2);
+    MASCULINO("Masculino"),
+    FEMININO("Feminino");
 
-    private int id;
+    private final String descricao;
 
-    Sexo(int id) {
-        this.id = id;
+    Sexo(String descricao) {
+        this.descricao = descricao;
     }
 
-    public int getId() {
-        return id;
+    public String getDescricao() {
+        return descricao;
     }
 }
