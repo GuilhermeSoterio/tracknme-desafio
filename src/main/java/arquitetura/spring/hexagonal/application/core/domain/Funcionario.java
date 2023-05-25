@@ -20,6 +20,14 @@ public class Funcionario {
 
     private String cep;
 
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
     public String getCidade() {
         return cidade;
     }
@@ -47,10 +55,6 @@ public class Funcionario {
     public String getCep() { return cep; }
 
     public void setCep(String cep) { this.cep = cep; }
-
-    public br.com.content4devs.Sexo getSexo() { return sexo; }
-
-    public void setSexo(Sexo sexo) { this.sexo = sexo; }
 
     public Long getId() {
         return id;

@@ -5,9 +5,11 @@ import arquitetura.spring.hexagonal.adapters.inbound.request.BuscarPorIdFunciona
 import arquitetura.spring.hexagonal.adapters.inbound.request.FuncionarioRequest;
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
 import arquitetura.spring.hexagonal.application.ports.in.BuscarFuncionarioPeloIdServicePort;
+import arquitetura.spring.hexagonal.application.ports.in.ExcluirFuncionarioServicePort;
 import arquitetura.spring.hexagonal.application.ports.in.SalvarFuncionarioServicePort;
 import arquitetura.spring.hexagonal.application.ports.out.BuscarFuncionarioPeloCEPPort;
 import arquitetura.spring.hexagonal.application.ports.out.BuscarTodosFuncionariosPort;
+import arquitetura.spring.hexagonal.application.ports.out.EditarFuncionarioPort;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +20,15 @@ import java.util.List;
 @AllArgsConstructor
 public class FuncionarioController {
 
+    private final ExcluirFuncionarioServicePort excluirFuncionarioServicePort;
+
     private final SalvarFuncionarioServicePort salvarFuncionarioServicePort;
 
     private final BuscarFuncionarioPeloIdServicePort buscarFuncionarioPeloIdServicePort;
 
     private final BuscarTodosFuncionariosPort buscarTodosFuncionariosPort;
+
+    private final EditarFuncionarioPort editarFuncionarioPort;
 
     private final BuscarFuncionarioPeloCEPPort buscarFuncionarioPeloCEPPort;
 
@@ -47,6 +53,16 @@ public class FuncionarioController {
     @GetMapping("/cep/{cep}")
     public List<Funcionario> BuscarFuncionariosPeloCEP(@PathVariable("cep") String cep){
         return buscarFuncionarioPeloCEPPort.buscarFuncionarioCEP(cep);
+    }
+
+    @PutMapping("/{id}")
+    public Funcionario editarFuncionario(@PathVariable("id") Long id, @RequestBody FuncionarioRequest funcionario){
+        return editarFuncionarioPort.editar(id, funcionario);
+    }
+
+    @DeleteMapping("/{id}")
+    public Funcionario excluirFuncionario(@PathVariable("id") Long id){
+        return excluirFuncionarioServicePort.excluirFuncionario(id);
     }
 
 }

@@ -21,8 +21,6 @@ public class SalvarFuncionarioAdapter implements SalvarFuncionarioPort {
 
     private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToUsuarioMapper;
 
-    private final EnderecoToEnderecoEntityMapper enderecoToEnderecoEntityMapper;
-
     @Override
     @Transactional
     public Funcionario salvar(Funcionario funcionario) {

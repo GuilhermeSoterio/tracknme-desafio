@@ -1,10 +1,7 @@
 package arquitetura.spring.hexagonal.config;
 
 import arquitetura.spring.hexagonal.adapters.outbound.*;
-import arquitetura.spring.hexagonal.application.core.service.BuscarFuncionarioPeloIdService;
-import arquitetura.spring.hexagonal.application.core.service.BuscarFuncionariosPeloCEPService;
-import arquitetura.spring.hexagonal.application.core.service.BuscarTodosFuncionariosService;
-import arquitetura.spring.hexagonal.application.core.service.SalvarFuncionarioService;
+import arquitetura.spring.hexagonal.application.core.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,5 +27,10 @@ public class Config {
 	@Bean
 	public BuscarFuncionariosPeloCEPService buscarFuncionariosPeloCEPService(BuscarFuncionarioPeloCEPAdapter buscarFuncionarioPeloCEPAdapter){
 		return new BuscarFuncionariosPeloCEPService(buscarFuncionarioPeloCEPAdapter);
+	}
+
+	@Bean
+	public EditarFuncionarioService editarFuncionarioService(EditarFuncionarioAdapter editarFuncionarioAdapter){
+		return new EditarFuncionarioService(editarFuncionarioAdapter);
 	}
 }

@@ -12,10 +12,6 @@ service FuncionarioService {
   rpc buscarPorCep(buscarPorCepRequest) returns (FuncionarioResponseList);
 }
 
-enum Sexo {
-  MASCULINO = 0;
-  FEMININO = 1;
-}
 
 message EmptyRequest {}
 
@@ -26,7 +22,7 @@ message FuncionarioResponseList {
 message FuncionarioRequest {
   string nome = 1;
   int32 idade = 2;
-  Sexo sexo = 3;
+  int32 sexo = 3;
   string bairro = 4;
   string estado = 5;
   string cidade = 6;
@@ -44,7 +40,7 @@ message buscarPorCepRequest {
 message FuncionarioResponse {
   string nome = 1;
   int32 idade = 2;
-  Sexo sexo = 3;
+  string sexo = 3;
   string bairro = 4;
   string estado = 5;
   string cidade = 6;

@@ -39,14 +39,15 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
 
     @Override
     public void create(FuncionarioRequest request, StreamObserver<FuncionarioResponse> responseObserver) {
-        //Sexo sexo = (request.getSexo() == 1) ? Sexo.MASCULINO : Sexo.FEMININO;
+
+            Sexo sexo = (request.getSexo() == 1) ? Sexo.MASCULINO : Sexo.FEMININO;
 
         var funcionarioEntity = new FuncionarioEntity(
                 request.getNome(),
                 request.getBairro(),
                 request.getIdade(),
                 request.getCep(),
-                Sexo.MASCULINO,
+                sexo,
                 request.getCidade(),
                 request.getEstado()
         );
@@ -56,7 +57,7 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
                 .setBairro(funcionarioResponse.getBairro())
                 .setIdade(funcionarioResponse.getIdade())
                 .setCep(funcionarioResponse.getCep())
-                .setSexo(funcionarioResponse.getSexo())
+                .setSexo(funcionarioResponse.getSexo().getDescricao())
                 .setBairro(funcionarioResponse.getBairro())
                 .setCidade(funcionarioResponse.getCidade())
                 .setEstado(funcionarioResponse.getEstado())
@@ -71,7 +72,7 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
                 .setBairro(funcionarioResponse.getBairro())
                 .setIdade(funcionarioResponse.getIdade())
                 .setCep(funcionarioResponse.getCep())
-                .setSexo(funcionarioResponse.getSexo())
+                .setSexo(funcionarioResponse.getSexo().getDescricao())
                 .setBairro(funcionarioResponse.getBairro())
                 .setCidade(funcionarioResponse.getCidade())
                 .setEstado(funcionarioResponse.getEstado())
@@ -88,7 +89,7 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
                                     .setBairro(funcionario.getBairro())
                                     .setIdade(funcionario.getIdade())
                                     .setCep(funcionario.getCep())
-                                    .setSexo(funcionario.getSexo())
+                                    .setSexo(funcionario.getSexo().getDescricao())
                                     .setBairro(funcionario.getBairro())
                                     .setCidade(funcionario.getCidade())
                                     .setEstado(funcionario.getEstado())
@@ -112,7 +113,7 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
                                 .setBairro(funcionario.getBairro())
                                 .setIdade(funcionario.getIdade())
                                 .setCep(funcionario.getCep())
-                                .setSexo(funcionario.getSexo())
+                                .setSexo(funcionario.getSexo().getDescricao())
                                 .setBairro(funcionario.getBairro())
                                 .setCidade(funcionario.getCidade())
                                 .setEstado(funcionario.getEstado())

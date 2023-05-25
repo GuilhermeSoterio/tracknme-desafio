@@ -15,12 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class BuscarFuncionarioPeloCEPAdapter implements BuscarFuncionarioPeloCEPPort {
 
-    private final FuncionarioRepository usuarioRepository;
-    private final FuncionarioEntityToFuncionarioMapper usuarioEntityToUsuarioMapper;
+    private final FuncionarioRepository funcionarioRepository;
+    private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToFuncionarioMapper;
 
     @Override
     @Transactional
     public List<Funcionario> buscarFuncionarioCEP(String cep) {
-        return usuarioEntityToUsuarioMapper.mapper(usuarioRepository.findByCep(cep));
+        return funcionarioEntityToFuncionarioMapper.mapper(funcionarioRepository.findByCep(cep));
     }
 }

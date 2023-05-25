@@ -1,6 +1,5 @@
 package arquitetura.spring.hexagonal.application.core.service;
 
-
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
 import arquitetura.spring.hexagonal.application.ports.in.SalvarFuncionarioServicePort;
 import arquitetura.spring.hexagonal.application.ports.out.BuscarEnderecoPort;
@@ -21,8 +20,10 @@ public class SalvarFuncionarioService implements SalvarFuncionarioServicePort {
     @Override
     public Funcionario salvarUsuario(Funcionario funcionario, String cep) {
 
-        if(funcionario.getCep() != null && funcionario.getBairro().isEmpty()
-        || funcionario.getCidade().isEmpty() || funcionario.getEstado().isEmpty()){
+        if (funcionario.getCep() != null &&
+                (funcionario.getBairro() == null || funcionario.getBairro().trim().isEmpty())
+                || (funcionario.getCidade() == null || funcionario.getCidade().trim().isEmpty())
+                || (funcionario.getEstado() == null || funcionario.getEstado().trim().isEmpty())) {
             var endereco = buscarEnderecoPort.buscar(cep);
             funcionario.setCidade(endereco.getCidade());
             funcionario.setEstado(endereco.getUf());
