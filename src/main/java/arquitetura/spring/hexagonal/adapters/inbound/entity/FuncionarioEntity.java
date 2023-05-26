@@ -46,8 +46,5 @@ public class FuncionarioEntity {
         this.estado = estado;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "endereco_id")
-//    private EnderecoEntity endereco;
 
 }
