@@ -1,5 +1,6 @@
 package arquitetura.spring.hexagonal.application.core.service;
 
+import arquitetura.spring.hexagonal.adapters.inbound.utils.FuncionarioUtils;
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
 import arquitetura.spring.hexagonal.application.ports.in.SalvarFuncionarioServicePort;
 import arquitetura.spring.hexagonal.application.ports.out.BuscarEnderecoPort;
@@ -19,11 +20,8 @@ public class SalvarFuncionarioService implements SalvarFuncionarioServicePort {
 
     @Override
     public Funcionario salvarUsuario(Funcionario funcionario, String cep) {
-
-        if (funcionario.getCep() != null &&
-                (funcionario.getBairro() == null || funcionario.getBairro().trim().isEmpty())
-                || (funcionario.getCidade() == null || funcionario.getCidade().trim().isEmpty())
-                || (funcionario.getEstado() == null || funcionario.getEstado().trim().isEmpty())) {
+        //Verifica se o campo cep foi preenchido, e esqueceu de inserir cidade estado ou bairro, nesse caso os colocando de acordo com a api
+        if (FuncionarioUtils.precisaAtualizarEndereco(funcionario)) {
             var endereco = buscarEnderecoPort.buscar(cep);
             funcionario.setCidade(endereco.getCidade());
             funcionario.setEstado(endereco.getUf());

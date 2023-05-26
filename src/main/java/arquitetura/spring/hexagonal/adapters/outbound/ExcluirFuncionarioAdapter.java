@@ -5,7 +5,6 @@ import arquitetura.spring.hexagonal.adapters.inbound.mapper.FuncionarioEntityToF
 import arquitetura.spring.hexagonal.adapters.outbound.repository.FuncionarioRepository;
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
 import arquitetura.spring.hexagonal.application.ports.in.ExcluirFuncionarioServicePort;
-import arquitetura.spring.hexagonal.application.ports.out.BuscarFuncionarioPeloIdPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

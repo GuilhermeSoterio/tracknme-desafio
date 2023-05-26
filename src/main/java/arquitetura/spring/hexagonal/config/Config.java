@@ -9,28 +9,40 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-	public SalvarFuncionarioService salvarUsuarioService(SalvarFuncionarioAdapter salvarUsuarioAdapter,
-														 BuscarEnderecoAdapter buscarEnderecoAdapter){
-		return new SalvarFuncionarioService(salvarUsuarioAdapter, buscarEnderecoAdapter);
-	}
+    public SalvarFuncionarioService salvarUsuarioService(
+            SalvarFuncionarioAdapter salvarUsuarioAdapter,
+            BuscarEnderecoAdapter buscarEnderecoAdapter) {
+        return new SalvarFuncionarioService(salvarUsuarioAdapter, buscarEnderecoAdapter);
+    }
 
-	@Bean
-	public BuscarFuncionarioPeloIdService buscarFuncionarioPeloIdService(BuscarFuncionarioPeloIdAdapter buscarFuncionarioPeloIdAdapter){
-		return new BuscarFuncionarioPeloIdService(buscarFuncionarioPeloIdAdapter);
-	}
+    @Bean
+    public BuscarFuncionarioPeloIdService buscarFuncionarioPeloIdService(
+            BuscarFuncionarioPeloIdAdapter buscarFuncionarioPeloIdAdapter) {
+        return new BuscarFuncionarioPeloIdService(buscarFuncionarioPeloIdAdapter);
+    }
 
-	@Bean
-	public BuscarTodosFuncionariosService buscarTodosFuncionariosService(BuscarTodosFuncionariosAdapter buscarTodosFuncionariosAdapter){
-		return new BuscarTodosFuncionariosService(buscarTodosFuncionariosAdapter);
-	}
+    @Bean
+    public BuscarTodosFuncionariosService buscarTodosFuncionariosService(
+            BuscarTodosFuncionariosAdapter buscarTodosFuncionariosAdapter) {
+        return new BuscarTodosFuncionariosService(buscarTodosFuncionariosAdapter);
+    }
 
-	@Bean
-	public BuscarFuncionariosPeloCEPService buscarFuncionariosPeloCEPService(BuscarFuncionarioPeloCEPAdapter buscarFuncionarioPeloCEPAdapter){
-		return new BuscarFuncionariosPeloCEPService(buscarFuncionarioPeloCEPAdapter);
-	}
+    @Bean
+    public BuscarFuncionariosPeloCEPService buscarFuncionariosPeloCEPService(
+            BuscarFuncionarioPeloCEPAdapter buscarFuncionarioPeloCEPAdapter) {
+        return new BuscarFuncionariosPeloCEPService(buscarFuncionarioPeloCEPAdapter);
+    }
 
-	@Bean
-	public EditarFuncionarioService editarFuncionarioService(EditarFuncionarioAdapter editarFuncionarioAdapter){
-		return new EditarFuncionarioService(editarFuncionarioAdapter);
-	}
+    @Bean
+    public EditarFuncionarioService editarFuncionarioService(
+            EditarFuncionarioAdapter editarFuncionarioAdapter) {
+        return new EditarFuncionarioService(editarFuncionarioAdapter);
+    }
+
+    @Bean
+    public EditarParcialmenteFuncionarioService editarParcialmenteFuncionarioService(
+            EditarFuncionarioParcialmenteAdapter editarFuncionarioParcialmenteAdapter,
+            BuscarEnderecoAdapter buscarEnderecoAdapter) {
+        return new EditarParcialmenteFuncionarioService(editarFuncionarioParcialmenteAdapter, buscarEnderecoAdapter);
+    }
 }
