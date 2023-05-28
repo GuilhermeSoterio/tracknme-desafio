@@ -19,7 +19,7 @@ public class DeploymentStatusController {
 
     @GetMapping
     public String deploy() {
-        return "Deploy efetuado com sucesso!";
+        return "Aplicação no ar!";
     }
 
 }

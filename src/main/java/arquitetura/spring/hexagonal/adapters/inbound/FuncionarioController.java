@@ -12,6 +12,8 @@ import arquitetura.spring.hexagonal.application.ports.out.BuscarTodosFuncionario
 import arquitetura.spring.hexagonal.application.ports.out.EditarFuncionarioPort;
 import arquitetura.spring.hexagonal.application.ports.out.EditarParcialmenteFuncionarioPort;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,31 +48,38 @@ public class FuncionarioController {
     }
 
     @GetMapping("/{id}")
+    @Cacheable(value = "FuncionariosPorId", key = "#id")
     public Funcionario buscarPeloIdFuncionario(@PathVariable("id") Long id) {
         return buscarFuncionarioPeloIdServicePort.buscarPeloId(id);
     }
 
     @GetMapping
+    @Cacheable("Funcionarios")
     public List<Funcionario> buscarTodosFuncionarios() {
+        System.out.println("Sem cache");
         return buscarTodosFuncionariosServicePort.buscarTodos();
     }
 
     @GetMapping("/cep/{cep}")
+    @Cacheable(value = "FuncionariosPorCEP", key = "#cep")
     public List<Funcionario> BuscarFuncionariosPeloCEP(@PathVariable("cep") String cep) {
         return buscarFuncionarioPeloCEPPort.buscarPeloCEP(cep);
     }
 
     @PutMapping("/{id}")
+    @CacheEvict(value = {"Funcionarios", "FuncionariosPorId", "FuncionariosPorCEP"}, allEntries = true)
     public Funcionario editarFuncionario(@PathVariable("id") Long id, @RequestBody FuncionarioRequest funcionario) {
         return editarFuncionarioPort.editarUsuario(id, funcionario);
     }
 
     @DeleteMapping("/{id}")
+    @CacheEvict(value = {"Funcionarios", "FuncionariosPorId", "FuncionariosPorCEP"}, allEntries = true)
     public Funcionario excluirFuncionario(@PathVariable("id") Long id) {
         return excluirFuncionarioServicePort.excluirFuncionario(id);
     }
 
     @PatchMapping("/{id}")
+    @CacheEvict(value = {"Funcionarios", "FuncionariosPorId", "FuncionariosPorCEP"}, allEntries = true)
     public Funcionario patchUpdate(@PathVariable("id") Long id, @RequestBody Map<String, Object> camposAtualizados) {
         return editarParcialmenteFuncionarioPort.editarParcialmente(id, camposAtualizados);
     }
