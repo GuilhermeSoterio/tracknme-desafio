@@ -19,7 +19,7 @@ public class SalvarFuncionarioService implements SalvarFuncionarioServicePort {
     }
 
     @Override
-    public Funcionario salvarUsuario(Funcionario funcionario, String cep) {
+    public Funcionario salvarFuncionario(Funcionario funcionario, String cep) {
         //Verifica se o campo cep foi preenchido, e esqueceu de inserir cidade estado ou bairro, nesse caso os colocando de acordo com a api
         if (FuncionarioUtils.precisaAtualizarEndereco(funcionario)) {
             var endereco = buscarEnderecoPort.buscar(cep);

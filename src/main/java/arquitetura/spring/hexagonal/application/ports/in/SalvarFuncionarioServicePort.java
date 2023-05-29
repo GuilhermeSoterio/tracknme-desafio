@@ -4,5 +4,5 @@ package arquitetura.spring.hexagonal.application.ports.in;
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
 
 public interface SalvarFuncionarioServicePort {
-    Funcionario salvarUsuario(Funcionario usuario, String cep);
+    Funcionario salvarFuncionario(Funcionario funcionario, String cep);
 }

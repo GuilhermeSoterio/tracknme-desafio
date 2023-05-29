@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @GrpcService
 public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServiceImplBase {
 
-    private final SalvarFuncionarioServicePort salvarUsuarioServicePort;
+    private final SalvarFuncionarioServicePort salvarFuncionarioServicePort;
 
     private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToFuncionarioMapper;
 
@@ -28,9 +28,9 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
 
     private final BuscarTodosFuncionariosPort buscarTodosFuncionariosPort;
 
-    public FuncionarioResource(SalvarFuncionarioServicePort salvarUsuarioServicePort,
+    public FuncionarioResource(SalvarFuncionarioServicePort salvarFuncionarioServicePort,
                                FuncionarioEntityToFuncionarioMapper funcionarioEntityToUsuarioMapper, BuscarFuncionarioPeloIdServicePort buscarFuncionarioPeloIdServicePort, BuscarFuncionarioPeloCEPPort buscarFuncionarioPeloCEPPort, BuscarTodosFuncionariosPort buscarTodosFuncionariosPort) {
-        this.salvarUsuarioServicePort = salvarUsuarioServicePort;
+        this.salvarFuncionarioServicePort = salvarFuncionarioServicePort;
         this.funcionarioEntityToFuncionarioMapper = funcionarioEntityToUsuarioMapper;
         this.buscarFuncionarioPeloIdServicePort = buscarFuncionarioPeloIdServicePort;
         this.buscarFuncionarioPeloCEPPort = buscarFuncionarioPeloCEPPort;
@@ -52,7 +52,7 @@ public class FuncionarioResource extends FuncionarioServiceGrpc.FuncionarioServi
                 request.getEstado()
         );
 
-        var funcionarioResponse = salvarUsuarioServicePort.salvarUsuario(funcionarioEntityToFuncionarioMapper.mapper(funcionarioEntity), funcionarioEntity.getCep());
+        var funcionarioResponse = salvarFuncionarioServicePort.salvarFuncionario(funcionarioEntityToFuncionarioMapper.mapper(funcionarioEntity), funcionarioEntity.getCep());
         responseObserver.onNext(FuncionarioResponse.newBuilder()
                 .setBairro(funcionarioResponse.getBairro())
                 .setIdade(funcionarioResponse.getIdade())

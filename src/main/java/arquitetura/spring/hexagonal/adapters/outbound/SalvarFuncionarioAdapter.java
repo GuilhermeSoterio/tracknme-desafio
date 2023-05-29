@@ -1,6 +1,5 @@
 package arquitetura.spring.hexagonal.adapters.outbound;
 
-import arquitetura.spring.hexagonal.adapters.inbound.mapper.EnderecoToEnderecoEntityMapper;
 import arquitetura.spring.hexagonal.adapters.inbound.mapper.FuncionarioEntityToFuncionarioMapper;
 import arquitetura.spring.hexagonal.adapters.inbound.mapper.FuncionarioToFuncionarioEntityMapper;
 import arquitetura.spring.hexagonal.adapters.outbound.repository.FuncionarioRepository;
@@ -19,13 +18,13 @@ public class SalvarFuncionarioAdapter implements SalvarFuncionarioPort {
 
     private final FuncionarioToFuncionarioEntityMapper funcionarioToFuncionarioEntityMapper;
 
-    private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToUsuarioMapper;
+    private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToFuncionarioMapper;
 
     @Override
     @Transactional
     public Funcionario salvar(Funcionario funcionario) {
         var funcionarioEntity = funcionarioToFuncionarioEntityMapper.mapper(funcionario);
 
-        return funcionarioEntityToUsuarioMapper.mapper(funcionarioRepository.save(funcionarioEntity));
+        return funcionarioEntityToFuncionarioMapper.mapper(funcionarioRepository.save(funcionarioEntity));
     }
 }

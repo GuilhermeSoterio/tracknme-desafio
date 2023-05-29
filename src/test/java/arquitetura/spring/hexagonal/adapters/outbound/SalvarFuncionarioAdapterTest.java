@@ -26,7 +26,7 @@ class SalvarFuncionarioAdapterTest {
     private FuncionarioToFuncionarioEntityMapper funcionarioToFuncionarioEntityMapper;
 
     @Mock
-    private FuncionarioEntityToFuncionarioMapper funcionarioEntityToUsuarioMapper;
+    private FuncionarioEntityToFuncionarioMapper funcionarioEntityToFuncionarioMapper;
 
     @InjectMocks
     private SalvarFuncionarioAdapter salvarFuncionarioAdapter;
@@ -40,7 +40,7 @@ class SalvarFuncionarioAdapterTest {
         // Configurar o comportamento dos mocks
         when(funcionarioToFuncionarioEntityMapper.mapper(funcionario)).thenReturn(funcionarioEntity);
         when(funcionarioRepository.save(funcionarioEntity)).thenReturn(funcionarioEntity);
-        when(funcionarioEntityToUsuarioMapper.mapper(funcionarioEntity)).thenReturn(funcionario);
+        when(funcionarioEntityToFuncionarioMapper.mapper(funcionarioEntity)).thenReturn(funcionario);
 
         // Executar o método a ser testado
         Funcionario resultado = salvarFuncionarioAdapter.salvar(funcionario);
@@ -48,7 +48,7 @@ class SalvarFuncionarioAdapterTest {
         // Verificar se os métodos dos mocks foram chamados corretamente
         verify(funcionarioToFuncionarioEntityMapper).mapper(funcionario);
         verify(funcionarioRepository).save(funcionarioEntity);
-        verify(funcionarioEntityToUsuarioMapper).mapper(funcionarioEntity);
+        verify(funcionarioEntityToFuncionarioMapper).mapper(funcionarioEntity);
 
         // Verificar o resultado do método
         assertEquals(funcionario, resultado);

@@ -18,10 +18,16 @@ public class BuscarEnderecoAdapter implements BuscarEnderecoPort {
     @Override
     public Endereco buscar(String cep) {
         try {
-            var endereco = buscarEnderecoRest.buscar(cep);
-            return endereco.getBody();
-        } catch(Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CEP inválido. Por favor, verifique o CEP informado.");
+            var resposta = buscarEnderecoRest.buscar(cep);
+            var response = resposta.getBody();
+
+            if (response == null) {
+               throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CEP inválido. Por favor, verifique o CEP informado.");
+            }
+
+            return response;
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erro ao buscar o CEP.");
         }
     }
 }

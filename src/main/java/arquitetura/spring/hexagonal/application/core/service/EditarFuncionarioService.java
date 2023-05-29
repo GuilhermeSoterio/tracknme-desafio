@@ -18,7 +18,7 @@ public class EditarFuncionarioService implements EditarFuncionarioServicePort {
     }
 
     @Override
-    public Funcionario editarUsuario(Long id, FuncionarioRequest funcionario) {
+    public Funcionario editarFuncionario(Long id, FuncionarioRequest funcionario) {
         return editarFuncionarioPort.editar(id, funcionario);
     }
 }

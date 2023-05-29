@@ -28,7 +28,7 @@ public class Config {
         return cacheManager;
     }
     @Bean
-    public SalvarFuncionarioService salvarUsuarioService(
+    public SalvarFuncionarioService salvarFuncionarioService(
             SalvarFuncionarioAdapter salvarUsuarioAdapter,
             BuscarEnderecoAdapter buscarEnderecoAdapter) {
         return new SalvarFuncionarioService(salvarUsuarioAdapter, buscarEnderecoAdapter);

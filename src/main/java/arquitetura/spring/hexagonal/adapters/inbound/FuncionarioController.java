@@ -44,7 +44,7 @@ public class FuncionarioController {
     @PostMapping
     public Funcionario salvarFuncionario(@RequestBody FuncionarioRequest usuarioRequest) {
         var funcionario = funcionarioRequestToFuncionarioMapper.mapper(usuarioRequest);
-        return salvarFuncionarioServicePort.salvarUsuario(funcionario, usuarioRequest.getCep());
+        return salvarFuncionarioServicePort.salvarFuncionario(funcionario, usuarioRequest.getCep());
     }
 
     @GetMapping("/{id}")
@@ -69,7 +69,7 @@ public class FuncionarioController {
     @PutMapping("/{id}")
     @CacheEvict(value = {"Funcionarios", "FuncionariosPorId", "FuncionariosPorCEP"}, allEntries = true)
     public Funcionario editarFuncionario(@PathVariable("id") Long id, @RequestBody FuncionarioRequest funcionario) {
-        return editarFuncionarioPort.editarUsuario(id, funcionario);
+        return editarFuncionarioPort.editarFuncionario(id, funcionario);
     }
 
     @DeleteMapping("/{id}")

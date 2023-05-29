@@ -32,7 +32,7 @@ public class EditarFuncionarioParcialmenteAdapter implements EditarParcialmenteF
                     Sexo sexo = sexos[sexoInt];
                     funcionario.setSexo(sexo);
                 }
-
+            }
             if (camposParciais.containsKey("nome")) funcionario.setNome((String) camposParciais.get("nome"));
             if (camposParciais.containsKey("idade")) funcionario.setIdade((Integer) camposParciais.get("idade"));
             if (camposParciais.containsKey("cidade")) funcionario.setCidade((String) camposParciais.get("cidade"));
@@ -40,7 +40,7 @@ public class EditarFuncionarioParcialmenteAdapter implements EditarParcialmenteF
             if (camposParciais.containsKey("bairro")) funcionario.setBairro((String) camposParciais.get("bairro"));
             if (camposParciais.containsKey("cep")) funcionario.setCep((String) camposParciais.get("cep"));
             funcionarioRepository.save(funcionario);
-        }
+
         return funcionarioEntityToFuncionarioMapper.mapper(funcionario);
     }
 }

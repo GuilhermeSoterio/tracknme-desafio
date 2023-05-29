@@ -5,5 +5,5 @@ import arquitetura.spring.hexagonal.adapters.inbound.request.FuncionarioRequest;
 import arquitetura.spring.hexagonal.application.core.domain.Funcionario;
 
 public interface EditarFuncionarioServicePort {
-    Funcionario editarUsuario(Long id, FuncionarioRequest funcionario);
+    Funcionario editarFuncionario(Long id, FuncionarioRequest funcionario);
 }

@@ -10,9 +10,6 @@ public class FuncionarioToFuncionarioEntityMapper {
      public FuncionarioEntity mapper(Funcionario funcionario){
           var funcionarioEntity = new FuncionarioEntity();
           BeanUtils.copyProperties(funcionario, funcionarioEntity);
-//          EnderecoEntity enderecoEntity = new EnderecoEntity();
-//
-//          funcionarioEntity.setEndereco(enderecoEntity);
           return funcionarioEntity;
      }
 

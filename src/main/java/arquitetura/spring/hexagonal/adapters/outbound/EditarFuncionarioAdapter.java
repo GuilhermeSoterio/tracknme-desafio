@@ -16,7 +16,7 @@ public class EditarFuncionarioAdapter implements EditarFuncionarioPort {
 
     private final FuncionarioRepository funcionarioRepository;
 
-    private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToUsuarioMapper;
+    private final FuncionarioEntityToFuncionarioMapper funcionarioEntityToFuncionarioMapper;
 
 
     @Override
@@ -32,6 +32,6 @@ public class EditarFuncionarioAdapter implements EditarFuncionarioPort {
             funcionarioEdit.setBairro(funcionario.getBairro());
         }
         funcionarioRepository.save(funcionarioEdit);
-        return funcionarioEntityToUsuarioMapper.mapper(funcionarioRepository.save(funcionarioEdit));
+        return funcionarioEntityToFuncionarioMapper.mapper(funcionarioRepository.save(funcionarioEdit));
     }
 }
